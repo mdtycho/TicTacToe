@@ -1,10 +1,19 @@
 # TicTacToe
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+## Installing
+
+*clone or download
+
+*If you downloaded the zip,extract files and cd to main folder(the one with package.json)
+
+*If you don't have npm and node,install both here: https://nodejs.org/en/
+
+*Run npm install to install package dependencies
 
 ## Running on your browser
 
-cd to project folder
+cd to project folder if you haven't done so already(the one with package.json)
 
 Run ng serve --open
 
