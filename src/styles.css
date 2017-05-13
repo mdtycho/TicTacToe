@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #b3b3b3;
+}
+
+div.main {
+    background-color: #1a1a1a;
+    width: 20vw;
+    height: 20vw;
+    margin: 0 auto;
+    -webkit-box-shadow: 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
+    box-shadow: 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
+    border-radius: 2.5rem;
+}
+
+div.main table.game-table {
+    width: 100%;
+    height: 100%;
+}
+
+div.main table.game-table tbody tr.game-row td.game-cell {
+    width: 6vw;
+    height: 6vw;
+    text-align: center;
+    border-right: 0.2rem dotted #ff0099;
+    border-bottom: 0.2rem dotted #ff0099;
+    vertical-align: middle;
+    font-size: 350%;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+div.main table.game-table tbody tr.game-row:last-child td.game-cell {
+    border-bottom: 0;
+}
+
+div.main table.game-table tbody tr.game-row td.game-cell:last-child {
+    border-right: 0;
+}
