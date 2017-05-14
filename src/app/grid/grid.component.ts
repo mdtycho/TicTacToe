@@ -31,8 +31,12 @@ export class GridComponent implements OnInit {
       this.board[row][col].State = true;
     }
     if(this.getEmptyCells().length===0){
-      this.restartGame();
+      setTimeout(()=>{this.restartGame()},1000);
       return;
+    }else{
+      let arr = this.getEmptyCells();
+      let rand = arr[Math.floor(Math.random()*arr.length)];
+      this.aiMakeMove(rand);
     }
     }
   }
@@ -72,6 +76,12 @@ export class GridComponent implements OnInit {
       }
     }
     this.choose_service.RestartGame.emit(null);
+  }
+
+  // AI makes a move
+
+  aiMakeMove(cell:Cell){
+    cell.State = this.player_choice==='X'?true:false;
   }
 
 
