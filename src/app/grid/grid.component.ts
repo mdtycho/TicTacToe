@@ -33,6 +33,27 @@ export class GridComponent implements OnInit {
     }
   }
 
+  // start the game
+  startGame():number{
+    while(true){
+
+    }
+  }
+
+  // check which cells are empty and return an array with those cells
+  getEmptyCells():Array<Cell>{
+    var empty_cells:Array<Cell> = [];
+    for(var i = 0;i<3;i++){
+      for(var j=0;j<3;j++){
+        if(this.board[i][j].State===null){
+          empty_cells.push(this.board[i][j]);
+        }
+      }
+    }
+
+    return empty_cells;
+  }
+
   // refresh the board and start again
   restartGame():void{
     for(var i = 0;i<3;i++){
