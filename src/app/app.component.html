@@ -1,5 +1,5 @@
 <app-grid></app-grid>
-<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div *ngIf="isModalShown" [config]="{ show: true,ignoreBackdropClick:true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,8 +9,8 @@
         </button>
             </div>
             <div class="modal-body">
-                <button (click)="choseX()" class="btn btn-success">Choose X</button>
-                <button (click)="choseO()" class="btn btn-primary pull-right">Choose O</button>
+                <button (click)="choseX()" class="btn btn-warning">Choose X</button>
+                <button (click)="choseO()" class="btn btn-warning pull-right">Choose O</button>
             </div>
         </div>
     </div>
