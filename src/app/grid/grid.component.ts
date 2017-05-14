@@ -36,7 +36,10 @@ export class GridComponent implements OnInit {
   // start the game
   startGame():number{
     while(true){
-
+      if(this.getEmptyCells().length===0){
+        this.restartGame();
+        return 200;
+      }
     }
   }
 
@@ -73,6 +76,7 @@ export class GridComponent implements OnInit {
         this.board[i].push(cell);
       }
     }
+    //this.startGame();
     console.log(this.board);
   }
 
