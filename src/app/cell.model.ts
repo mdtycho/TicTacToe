@@ -1,3 +1,13 @@
 export class Cell {
-   public state:boolean = null;
+   private state:boolean = null;
+
+   displayCell():string{
+       if(this.state===null){
+           return "";
+       }else if(this.state===false){
+           return "X";
+       }else{
+           return "O";
+       }
+   }
 }

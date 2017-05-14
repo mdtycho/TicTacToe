@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+
+  public isModalShown:boolean = true;
+
+  public onHidden():void {
+    this.isModalShown = false;
+  }
+  
 }

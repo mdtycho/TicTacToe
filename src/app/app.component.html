@@ -1,4 +1,17 @@
-<h1>
-    {{title}}
-</h1>
 <app-grid></app-grid>
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Placeholder For Game Options(X/Y)</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p>I just have to implement the AI!</p>
+                <p>When you close me, I'll be removed from the DOM</p>
+            </div>
+        </div>
+    </div>
+</div>
