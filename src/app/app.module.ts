@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// Services
+import {ChooseService} from './services/choose.service'
+
 import { AppComponent } from './app.component';
 
 import { GridComponent } from './grid/grid.component';
@@ -19,7 +22,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [ChooseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
