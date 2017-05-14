@@ -13,5 +13,10 @@ export class Cell {
    public set State(v : boolean) {
        this.state = v;
    }
+ 
+   public get State() : boolean {
+       return this.state;
+   }
+   
    
 }
