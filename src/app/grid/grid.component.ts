@@ -21,9 +21,9 @@ export class GridComponent implements OnInit {
   // player's choice
   player_choice:string = "";
 
-  changeStuff(){
+  changeStuff(row:number,col:number){
     if(this.player_choice==='X'){
-      this.board[0][0].State = false;
+      this.board[row][col].State = false;
     }else{
       this.board[0][0].State = true;
     }
