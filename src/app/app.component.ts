@@ -22,11 +22,15 @@ export class AppComponent {
   }
 
   choseX():void{
+    console.log('choose x');
     this.choose_service.ChooseOne.emit('X');
+    this.autoShownModal.hide();
   }
 
   choseO():void{
+    console.log('choose o');
     this.choose_service.ChooseOne.emit('O');
+    this.autoShownModal.hide();
   }
   
 }

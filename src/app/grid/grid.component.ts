@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Cell} from '../cell.model';
 
+// Services
+import {ChooseService} from '../services/choose.service';
+
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
@@ -8,12 +11,23 @@ import {Cell} from '../cell.model';
 })
 export class GridComponent implements OnInit {
 
-  constructor() {
+  constructor(private choose_service:ChooseService) {
     console.log("wooo");
+    this.choose_service.ChooseOne.subscribe((choice)=>{this.player_choice=choice})
    }
 
   public board:Array<Array<Cell>> = new Array<Array<Cell>>();
 
+  // player's choice
+  player_choice:string = "";
+
+  changeStuff(){
+    if(this.player_choice==='X'){
+      this.board[0][0].State = false;
+    }else{
+      this.board[0][0].State = true;
+    }
+  }
 
 
   ngOnInit() {

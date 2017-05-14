@@ -10,4 +10,8 @@ export class Cell {
            return "O";
        }
    }
+   public set State(v : boolean) {
+       this.state = v;
+   }
+   
 }

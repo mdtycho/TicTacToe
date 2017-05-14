@@ -2,7 +2,7 @@
     <table class="game-table">
         <tbody>
             <tr class="game-row">
-                <td class="game-cell">{{board[0][0].displayCell()}}</td>
+                <td (click)="changeStuff()" class="game-cell">{{board[0][0].displayCell()}}</td>
                 <td class="game-cell">{{board[0][1].displayCell()}}</td>
                 <td class="game-cell">{{board[0][2].displayCell()}}</td>
             </tr>
