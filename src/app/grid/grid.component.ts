@@ -16,11 +16,13 @@ export class GridComponent implements OnInit {
     this.choose_service.ChooseOne.subscribe((choice)=>{this.player_choice=choice})
    }
 
+   // An array of Cell[] representing our board
   public board:Array<Array<Cell>> = new Array<Array<Cell>>();
 
   // player's choice
   player_choice:string = "";
 
+  // handler for cell click events
   changeStuff(row:number,col:number){
     if( this.board[row][col].State===null){
       if(this.player_choice==='X'){
@@ -29,6 +31,16 @@ export class GridComponent implements OnInit {
       this.board[row][col].State = true;
     }
     }
+  }
+
+  // refresh the board and start again
+  restartGame():void{
+    for(var i = 0;i<3;i++){
+      for(var j=0;j<3;j++){
+        this.board[i][j].State = null;
+      }
+    }
+    this.choose_service.RestartGame.emit(null);
   }
 
 

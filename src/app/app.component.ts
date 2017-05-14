@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor(choose_service:ChooseService){
     this.choose_service = choose_service;
+    this.choose_service.RestartGame.subscribe(()=>{this.isModalShown=true;});
   }
   private choose_service:ChooseService;
 

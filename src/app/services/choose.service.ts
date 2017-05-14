@@ -7,4 +7,6 @@ export class ChooseService {
 
   public ChooseOne:EventEmitter<string> = new EventEmitter();
 
+  public RestartGame:EventEmitter<any> = new EventEmitter();
+
 }
