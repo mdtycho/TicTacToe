@@ -30,15 +30,22 @@ export class GridComponent implements OnInit {
     }else{
       this.board[row][col].State = true;
     }
+    if(this.getEmptyCells().length===0){
+      this.restartGame();
+      return;
+    }
     }
   }
 
   // start the game
   startGame():number{
-    while(true){
+    var c:number = 0;
+    while(c<200){
       if(this.getEmptyCells().length===0){
         this.restartGame();
         return 200;
+      }else{
+        c++;
       }
     }
   }
