@@ -25,7 +25,7 @@ export class AppComponent {
       this.modal_title = "You have drawn,select X or O to start again";
     }else if(state==="AI"){
       this.modal_title = "You have lost :( ,select X or O to start again";
-    }else{
+    }else if(state==="PLAYER"){
       this.modal_title = "You have won :) , select X or O to start again";
     }
     this.isModalShown=true;

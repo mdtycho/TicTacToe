@@ -29,6 +29,9 @@ export class GridComponent implements OnInit {
     'O':true
   }
 
+  // milliseconds to wait before showing modal
+  static MTW:number = 1000;
+
   // handler for cell click events
   changeStuff(row:number,col:number){
     if( this.board[row][col].State===null){
@@ -38,20 +41,20 @@ export class GridComponent implements OnInit {
       this.board[row][col].State = true;
     }
     if(this.getEmptyCells().length===0){
-      if(this.scorer===null){
-        setTimeout(()=>{this.restartGame("DRAW")},500);
+      if(this.scorer()===null){
+        setTimeout(()=>{this.restartGame("DRAW")},GridComponent.MTW);
       }else{
-        setTimeout(()=>{this.restartGame("PLAYER")},500);
+        setTimeout(()=>{this.restartGame("PLAYER")},GridComponent.MTW);
       }
       return;
     }else if(this.scorer()!==null){
-      setTimeout(()=>{this.restartGame("PLAYER")},500);
+      setTimeout(()=>{this.restartGame("PLAYER")},GridComponent.MTW);
     }else{
       let arr = this.getEmptyCells();
       let rand = arr[Math.floor(Math.random()*arr.length)];
       this.aiMakeMove(rand);
       if(this.scorer()!==null){
-        setTimeout(()=>{this.restartGame("AI")},500);
+        setTimeout(()=>{this.restartGame("AI")},GridComponent.MTW);
         return;
       }
     }
