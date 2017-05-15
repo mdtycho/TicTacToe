@@ -12,11 +12,24 @@ export class AppComponent {
 
   constructor(choose_service:ChooseService){
     this.choose_service = choose_service;
-    this.choose_service.RestartGame.subscribe(()=>{this.isModalShown=true;});
+    this.choose_service.RestartGame.subscribe((state)=>{this.restartGame(state)});
   }
   private choose_service:ChooseService;
 
   public isModalShown:boolean = true;
+
+  modal_title:string = "Choose one of X or O";
+
+  restartGame(state:string){
+    if(state==="DRAW"){
+      this.modal_title = "You have drawn,select X or O to start again";
+    }else if(state==="AI"){
+      this.modal_title = "You have lost :( ,select X or O to start again";
+    }else{
+      this.modal_title = "You have won :) , select X or O to start again";
+    }
+    this.isModalShown=true;
+  }
 
   public onHidden():void {
     this.isModalShown = false;

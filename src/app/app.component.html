@@ -1,16 +1,16 @@
 <app-grid></app-grid>
 <div *ngIf="isModalShown" [config]="{ show: true,ignoreBackdropClick:true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
-        <div class="modal-content">
+        <div class="modal-content purple-background">
             <div class="modal-header">
-                <h4 class="modal-title pull-left">Choose one of X or O</h4>
+                <h4 class="modal-title pull-left">{{modal_title}}</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
             <div class="modal-body">
-                <button (click)="choseX()" class="btn btn-warning">Choose X</button>
-                <button (click)="choseO()" class="btn btn-warning pull-right">Choose O</button>
+                <button (click)="choseX()" class="btn btn-warning purple-text">Choose X</button>
+                <button (click)="choseO()" class="btn btn-warning pull-right purple-text">Choose O</button>
             </div>
         </div>
     </div>

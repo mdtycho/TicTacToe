@@ -47,3 +47,14 @@ div.main table.game-table tbody tr.game-row:last-child td.game-cell {
 div.main table.game-table tbody tr.game-row td.game-cell:last-child {
     border-right: 0;
 }
+
+
+/*
+.purple-background {
+    background-color: #9966ff;
+}
+*/
+
+.purple-text {
+    color: #9966ff;
+}
