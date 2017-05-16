@@ -1,5 +1,6 @@
 export class Cell {
    private state:boolean = null;
+   private winning_set:boolean = false;
 
    displayCell():string{
        if(this.state===null){
@@ -17,6 +18,17 @@ export class Cell {
    public get State() : boolean {
        return this.state;
    }
+
+   public set winningSet(v : boolean) {
+       this.winning_set = v;
+   }
+
+   
+   public get winningSet() : boolean {
+       return this.winning_set;
+   }
+   
+   
    
    
 }

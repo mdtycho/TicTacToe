@@ -48,6 +48,10 @@ div.main table.game-table tbody tr.game-row td.game-cell:last-child {
     border-right: 0;
 }
 
+td.winningSet {
+    background-color: #ccff00;
+}
+
 
 /*
 .purple-background {

@@ -2,19 +2,19 @@
     <table class="game-table">
         <tbody>
             <tr class="game-row">
-                <td (click)="changeStuff(0,0)" class="game-cell">{{board[0][0].displayCell()}}</td>
-                <td (click)="changeStuff(0,1)" class="game-cell">{{board[0][1].displayCell()}}</td>
-                <td (click)="changeStuff(0,2)" class="game-cell">{{board[0][2].displayCell()}}</td>
+                <td (click)="changeStuff(0,0)" class="game-cell" [class.winningSet]="board[0][0].winningSet">{{board[0][0].displayCell()}}</td>
+                <td (click)="changeStuff(0,1)" class="game-cell" [class.winningSet]="board[0][1].winningSet">{{board[0][1].displayCell()}}</td>
+                <td (click)="changeStuff(0,2)" class="game-cell" [class.winningSet]="board[0][2].winningSet">{{board[0][2].displayCell()}}</td>
             </tr>
             <tr class="game-row">
-                <td (click)="changeStuff(1,0)" class="game-cell">{{board[1][0].displayCell()}}</td>
-                <td (click)="changeStuff(1,1)" class="game-cell">{{board[1][1].displayCell()}}</td>
-                <td (click)="changeStuff(1,2)" class="game-cell">{{board[1][2].displayCell()}}</td>
+                <td (click)="changeStuff(1,0)" class="game-cell" [class.winningSet]="board[1][0].winningSet">{{board[1][0].displayCell()}}</td>
+                <td (click)="changeStuff(1,1)" class="game-cell" [class.winningSet]="board[1][1].winningSet">{{board[1][1].displayCell()}}</td>
+                <td (click)="changeStuff(1,2)" class="game-cell" [class.winningSet]="board[1][2].winningSet">{{board[1][2].displayCell()}}</td>
             </tr>
             <tr class="game-row">
-                <td (click)="changeStuff(2,0)" class="game-cell">{{board[2][0].displayCell()}}</td>
-                <td (click)="changeStuff(2,1)" class="game-cell">{{board[2][1].displayCell()}}</td>
-                <td (click)="changeStuff(2,2)" class="game-cell">{{board[2][2].displayCell()}}</td>
+                <td (click)="changeStuff(2,0)" class="game-cell" [class.winningSet]="board[2][0].winningSet">{{board[2][0].displayCell()}}</td>
+                <td (click)="changeStuff(2,1)" class="game-cell" [class.winningSet]="board[2][1].winningSet">{{board[2][1].displayCell()}}</td>
+                <td (click)="changeStuff(2,2)" class="game-cell" [class.winningSet]="board[2][2].winningSet">{{board[2][2].displayCell()}}</td>
             </tr>
         </tbody>
     </table>

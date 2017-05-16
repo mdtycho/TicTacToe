@@ -61,19 +61,6 @@ export class GridComponent implements OnInit {
     }
   }
 
-  // start the game
-  startGame():number{
-    var c:number = 0;
-    while(c<200){
-      if(this.getEmptyCells().length===0){
-        this.restartGame("");
-        return 200;
-      }else{
-        c++;
-      }
-    }
-  }
-
   // check which cells are empty and return an array with those cells
   getEmptyCells():Array<Cell>{
     var empty_cells:Array<Cell> = [];
@@ -93,6 +80,7 @@ export class GridComponent implements OnInit {
     for(var i = 0;i<3;i++){
       for(var j=0;j<3;j++){
         this.board[i][j].State = null;
+        this.board[i][j].winningSet = false;
       }
     }
     this.choose_service.RestartGame.emit(state);
@@ -114,22 +102,40 @@ export class GridComponent implements OnInit {
 
     let x:boolean= this.board[0][0].State,y:boolean=this.board[0][1].State,z:boolean =this.board[0][2].State;
     if(x==true && (y===true && z === true)){
+      this.board[0][0].winningSet = true;
+      this.board[0][1].winningSet = true;
+      this.board[0][2].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[0][0].winningSet = true;
+      this.board[0][1].winningSet = true;
+      this.board[0][2].winningSet = true;
       return false;
     }
 
     x= this.board[1][0].State,y=this.board[1][1].State,z =this.board[1][2].State;
     if(x==true && (y===true && z === true)){
+      this.board[1][0].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[1][2].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[1][0].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[1][2].winningSet = true;
       return false;
     }
 
     x= this.board[2][0].State,y=this.board[2][1].State,z =this.board[2][2].State;
     if(x==true && (y===true && z === true)){
+      this.board[2][0].winningSet = true;
+      this.board[2][1].winningSet = true;
+      this.board[2][2].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[2][0].winningSet = true;
+      this.board[2][1].winningSet = true;
+      this.board[2][2].winningSet = true;
       return false;
     }
 
@@ -137,37 +143,67 @@ export class GridComponent implements OnInit {
 
     x= this.board[0][0].State,y=this.board[1][0].State,z =this.board[2][0].State;
     if(x==true && (y===true && z === true)){
+      this.board[0][0].winningSet = true;
+      this.board[1][0].winningSet = true;
+      this.board[2][0].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[0][0].winningSet = true;
+      this.board[1][0].winningSet = true;
+      this.board[2][0].winningSet = true;
       return false;
     }
 
     x= this.board[0][1].State,y=this.board[1][1].State,z =this.board[2][1].State;
     if(x==true && (y===true && z === true)){
+      this.board[0][1].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[2][1].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[0][1].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[2][1].winningSet = true;
       return false;
     }
 
     x= this.board[0][2].State,y=this.board[1][2].State,z =this.board[2][2].State;
     if(x==true && (y===true && z === true)){
+      this.board[0][2].winningSet = true;
+      this.board[1][2].winningSet = true;
+      this.board[2][2].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[0][2].winningSet = true;
+      this.board[1][2].winningSet = true;
+      this.board[2][2].winningSet = true;
       return false;
     }
     // Diagonals
 
     x= this.board[0][0].State,y=this.board[1][1].State,z =this.board[2][2].State;
     if(x==true && (y===true && z === true)){
+      this.board[0][0].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[2][2].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[0][0].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[2][2].winningSet = true;
       return false;
     }
 
     x= this.board[0][2].State,y=this.board[1][1].State,z =this.board[2][0].State;
     if(x==true && (y===true && z === true)){
+      this.board[0][2].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[2][0].winningSet = true;
       return true;
     }else if(x==false && (y===false && z === false)){
+      this.board[0][2].winningSet = true;
+      this.board[1][1].winningSet = true;
+      this.board[2][0].winningSet = true;
       return false;
     }
     return null;
@@ -181,7 +217,6 @@ export class GridComponent implements OnInit {
         this.board[i].push(cell);
       }
     }
-    //this.startGame();
     console.log(this.board);
   }
 
