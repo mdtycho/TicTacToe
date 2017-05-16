@@ -1,6 +1,8 @@
 export class Cell {
    private state:boolean = null;
    private winning_set:boolean = false;
+   public col:number = null;
+   public row:number = null;
 
    displayCell():string{
        if(this.state===null){

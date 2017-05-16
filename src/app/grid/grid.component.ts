@@ -51,8 +51,9 @@ export class GridComponent implements OnInit {
       setTimeout(()=>{this.restartGame("PLAYER")},GridComponent.MTW);
     }else{
       let arr = this.getEmptyCells();
-      let rand = arr[Math.floor(Math.random()*arr.length)];
-      this.aiMakeMove(rand);
+      //let rand = arr[Math.floor(Math.random()*arr.length)];
+      arr.sort((a,b)=>{return Math.sqrt((a.row-row)**2+(a.col-col)**2)-Math.sqrt((b.row-row)**2+(b.col-col)**2)})
+      this.aiMakeMove(arr[1]);
       if(this.scorer()!==null){
         setTimeout(()=>{this.restartGame("AI")},GridComponent.MTW);
         return;
@@ -214,6 +215,8 @@ export class GridComponent implements OnInit {
       this.board.push([]);
       for(var j=0;j<3;j++){
         let cell:Cell = new Cell();
+        cell.row = i;
+        cell.col = j;
         this.board[i].push(cell);
       }
     }
