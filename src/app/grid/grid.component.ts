@@ -50,10 +50,9 @@ export class GridComponent implements OnInit {
     }else if(this.scorer()!==null){
       setTimeout(()=>{this.restartGame("PLAYER")},GridComponent.MTW);
     }else{
-      let arr = this.getEmptyCells();
-      //let rand = arr[Math.floor(Math.random()*arr.length)];
-      arr.sort((a,b)=>{return Math.sqrt((a.row-row)**2+(a.col-col)**2)-Math.sqrt((b.row-row)**2+(b.col-col)**2)})
-      this.aiMakeMove(arr[1]);
+      console.log('smart move assignment');
+      let smart_move:Cell = this.chooseMove();
+      this.aiMakeMove(smart_move);
       if(this.scorer()!==null){
         setTimeout(()=>{this.restartGame("AI")},GridComponent.MTW);
         return;
@@ -96,6 +95,179 @@ export class GridComponent implements OnInit {
   // Minmax algorithm for generating smart ai moves
 
   minimax(){}
+
+  /**
+   * function for choosing the ai's moves
+   * chooses the move that maximises it's own chance of winning but minimises the chance of the player winning
+   * Returns a cell
+   */
+  chooseMove():Cell{
+    console.log('empty cells assignment');
+    var empty_cells = this.getEmptyCells();
+    for(var i= 0;i<empty_cells.length;i++){
+      console.log('entering main choose move for loop');
+      // get cells on the same column
+      var same_column =[];
+      for(var j = 0;j<3;j++){
+        if(j!==empty_cells[i].row){
+          same_column.push(this.board[j][empty_cells[i].col]);
+        }
+      }
+
+      // get cells on same row
+      var same_row;
+      console.log('testing!!');
+      console.log(this.board[empty_cells[i].row]);
+      console.log('1');
+      console.log(empty_cells[i].col);
+      console.log('2');
+      console.log(this.board[empty_cells[i].row].filter((cell)=>{return cell.col!==empty_cells[i].col}));
+      same_row=this.board[empty_cells[i].row].filter((cell)=>{return cell.col!==empty_cells[i].col});
+
+      // get cells on same diagonal
+      var same_diagonal = [];
+      if(empty_cells[i].row===1 && empty_cells[i].col===1){
+        same_diagonal.push(this.board[0][0]);
+        same_diagonal.push(this.board[2][2]);
+        same_diagonal.push(this.board[0][2]);
+        same_diagonal.push(this.board[2][0]);
+        console.log('middle cell diagonal');
+        console.log(same_diagonal);
+      }else if(empty_cells[i].row!==1 && empty_cells[i].col!==1){
+        if(empty_cells[i].row===0){
+          if(empty_cells[i].col===0){
+            same_diagonal.push(this.board[1][1]);
+            same_diagonal.push(this.board[2][2]);
+          }else{
+            same_diagonal.push(this.board[1][1]);
+            same_diagonal.push(this.board[2][0]);
+          }
+
+        }else if(empty_cells[i].row===2){
+          if(empty_cells[i].col===0){
+            same_diagonal.push(this.board[1][1]);
+            same_diagonal.push(this.board[0][2]);
+          }else{
+            same_diagonal.push(this.board[1][1]);
+            same_diagonal.push(this.board[0][0]);
+          }
+        }
+        console.log('side diagonals');
+        console.log(same_diagonal);
+      }
+
+      // Return the empty cell if the rest of the cells in the column have been marked by the player
+
+      if(this.player_choice==='X'){
+        if(same_column[0].State===same_column[1].State && same_column[0].State===false){
+          return empty_cells[i];
+        }
+      }else{
+        if(same_column[0].State===same_column[1].State && same_column[0].State===true){
+          return empty_cells[i];
+        }
+      }
+
+      // Return the empty cell if the rest of the cells in the row have been marked by the player
+      console.log('about to break?');
+      console.log(same_row);
+      if(this.player_choice==='X'){
+        if(same_row[0].State===same_row[1].State && same_row[0].State===false){
+          return empty_cells[i];
+        }
+      }else{
+        if(same_row[0].State===same_row[1].State && same_row[0].State===true){
+          return empty_cells[i];
+        }
+      }
+      console.log('reached');
+
+      // Return the empty cell if the rest of the cells in the diagonal have been marked by the player
+      console.log('logic for diags');
+      if(same_diagonal.length>0){
+        if(this.player_choice==='X'){
+        if(same_diagonal[0].State===same_diagonal[1].State && same_diagonal[0].State===false){
+          return empty_cells[i];
+        }
+      }else{
+        if(same_diagonal[0].State===same_diagonal[1].State && same_diagonal[0].State===true){
+          return empty_cells[i];
+        }
+      }
+      console.log('end of first diags');
+      }
+       
+       if(same_diagonal.length===4){
+         if(this.player_choice==='X'){
+          if(same_diagonal[2].State===same_diagonal[3].State && same_diagonal[2].State===false){
+            return empty_cells[i];
+          }
+      }else{
+        if(same_diagonal[2].State===same_diagonal[3].State && same_diagonal[2].State===true){
+          return empty_cells[i];
+        }
+      }
+       }
+
+       console.log('end of 2nd diags');
+
+       // PLAYING  TO WIN
+
+       // Return the empty cell if the rest of the cells in the column have been marked by the computer
+
+      if(this.player_choice==='X'){
+        if(same_column[0].State===same_column[1].State && same_column[0].State===true){
+          return empty_cells[i];
+        }
+      }else{
+        if(same_column[0].State===same_column[1].State && same_column[0].State===false){
+          return empty_cells[i];
+        }
+      }
+
+      // Return the empty cell if the rest of the cells in the row have been marked by the computer
+
+      if(this.player_choice==='X'){
+        if(same_row[0].State===same_row[1].State && same_row[0].State===true){
+          return empty_cells[i];
+        }
+      }else{
+        if(same_row[0].State===same_row[1].State && same_row[0].State===false){
+          return empty_cells[i];
+        }
+      }
+
+      // Return the empty cell if the rest of the cells in the diagonal have been marked by the ai
+      if(same_diagonal.length>0){
+        if(this.player_choice==='X'){
+        if(same_diagonal[0].State===same_diagonal[1].State && same_diagonal[0].State===true){
+          return empty_cells[i];
+        }
+      }else{
+        if(same_diagonal[0].State===same_diagonal[1].State && same_diagonal[0].State===false){
+          return empty_cells[i];
+        }
+      }
+      }
+       
+       if(same_diagonal.length===4){
+         if(this.player_choice==='X'){
+          if(same_diagonal[2].State===same_diagonal[3].State && same_diagonal[2].State===true){
+            return empty_cells[i];
+          }
+      }else{
+        if(same_diagonal[2].State===same_diagonal[3].State && same_diagonal[2].State===false){
+          return empty_cells[i];
+        }
+      }
+       }
+       
+    }
+
+    
+    // Return a random cell if all rules fail
+    return empty_cells[Math.floor(Math.random()*empty_cells.length)];
+  }
 
   // Scoring function
   scorer():boolean{
