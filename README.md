@@ -11,6 +11,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 *Run npm install to install package dependencies
 
+## Demo
+Play the demo here https://codepen.io/mdtycho/project/full/AxxbnW/
+
 ## Running on your browser
 
 cd to project folder if you haven't done so already(the one with package.json)
